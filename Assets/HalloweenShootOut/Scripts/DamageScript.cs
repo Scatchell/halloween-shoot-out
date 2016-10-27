@@ -38,10 +38,11 @@ public class DamageScript : MonoBehaviour {
 
 	void Hit() {
 		health -= hitDamage;
+		PauseMovement ();
 		if (health > 0) {
-			PauseMovement ();
 			Invoke ("StartMovement", movementPauseDuration);
 		}
+
 		animator.Play(health == 0 ? "Death" : "Hit");
 	}	
 	// Update is called once per frame

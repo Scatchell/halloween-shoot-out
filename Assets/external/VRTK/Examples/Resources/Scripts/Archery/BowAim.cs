@@ -93,7 +93,7 @@
                 AimArrow();
                 AimBow();
                 PullString();
-                if (!stringControl.grabPressed)
+				if (!stringControl.triggerPressed)
                 {
                     currentArrow.GetComponent<Arrow>().Fired();
                     fired = true;
