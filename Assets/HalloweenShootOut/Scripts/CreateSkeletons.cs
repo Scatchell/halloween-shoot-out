@@ -18,7 +18,6 @@ public class CreateSkeletons : MonoBehaviour {
 	static float RandomPosition ()
 	{
 		bool negative = Random.Range (0, 2) == 1 ? true : false;
-		Debug.Log (negative);
 		int randomNumber = Random.Range (MIN_RANGE, MAX_RANGE);
 		return (negative ? -randomNumber : randomNumber);
 	}
