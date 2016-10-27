@@ -5,11 +5,13 @@ public class CreateSkeletons : MonoBehaviour {
 	public GameObject skeletonPrefab;
 	private const int MIN_RANGE = 8;
 	private const int MAX_RANGE = 20;
+	public AudioClip skeletonCreationClip;
+	public AudioSource skeletonNoisePlayer;
 
 	// Use this for initialization
 	void Start () {
 		SpawnSkeleton ();
-
+		skeletonNoisePlayer.clip = skeletonCreationClip;
 		InvokeRepeating("SpawnSkeleton", 2.0f, 8.0f);
 	}
 
@@ -22,6 +24,8 @@ public class CreateSkeletons : MonoBehaviour {
 	}
 
 	private void SpawnSkeleton() {
+		skeletonNoisePlayer.Play ();
+
 		float randomZ = RandomPosition ();
 		float randomX = RandomPosition ();
 
