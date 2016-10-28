@@ -10,7 +10,6 @@ public class CreateSkeletons : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		SpawnSkeleton ();
 		skeletonNoisePlayer.clip = skeletonCreationClip;
 		InvokeRepeating("SpawnSkeleton", 2.0f, 8.0f);
 	}

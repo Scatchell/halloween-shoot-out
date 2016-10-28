@@ -3,13 +3,14 @@ using System.Collections;
 
 public class Movement : MonoBehaviour {
 	public float speed;
-	bool paused = false;
+	bool paused = true;
 	private Vector3 startPosition;
 	private GameObject player;
 
 	void Start () {
 		startPosition = gameObject.transform.position;
 		player = GameObject.Find ("PlayerMarker");
+		Invoke ("StartMovement", 3f);
 	}
 
 	public void PauseMovement () {
