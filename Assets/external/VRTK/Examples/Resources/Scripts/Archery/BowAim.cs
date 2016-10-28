@@ -11,8 +11,6 @@
         public float maxPullDistance = 1.1f;
         public int bowVibration = 250;
         public int stringVibration = 350;
-		public AudioSource backgroundMusic;
-		public AudioClip backgroundMusicClip;
 
         private BowAnimation bowAnimation;
         private GameObject currentArrow;
@@ -43,15 +41,9 @@
             return interact.IsGrabbed();
         }
 
-		private void PlayMusic(){
-			backgroundMusic.clip = backgroundMusicClip;
-			backgroundMusic.Play ();
-		}
-
         public bool HasArrow()
         {
 			GameObject.Find ("root").GetComponent<Game> ().Begin ();
-			PlayMusic ();
             return currentArrow != null;
         }
 

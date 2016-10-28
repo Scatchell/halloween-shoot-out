@@ -3,8 +3,8 @@ using System.Collections;
 
 public class DamageScript : MonoBehaviour {
 
-	private int health = 2;
-	private int hitDamage = 1;
+	private int health = 4;
+	private int hitDamage = 2;
 	private float movementPauseDuration = 1.5f;
 	private AudioSource skeletonSoundPlayer;
 	public AudioClip skeletonInjuryNoise;
@@ -20,7 +20,9 @@ public class DamageScript : MonoBehaviour {
 	void OnTriggerEnter(Collider collider) {
 		if (IsAlive ()) {
 			if (collider.gameObject.name == "Arrow") {
-				Hit ();
+				Hit (hitDamage);
+			} else if (collider.gameObject.name == "BasicBow") {
+				Hit (hitDamage - 1);
 			}
 		}
 	}
@@ -39,8 +41,8 @@ public class DamageScript : MonoBehaviour {
 		gameObject.GetComponent<Movement> ().StartMovement ();
 	}
 
-	void Hit() {
-		health -= hitDamage;
+	void Hit(int damage) {
+		health -= damage;
 		PlaySkeletonInjuryNoise ();
 		CancelInvoke ();
 		PauseMovement ();
