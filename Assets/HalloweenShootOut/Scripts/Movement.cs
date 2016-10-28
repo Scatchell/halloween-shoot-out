@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class Movement : MonoBehaviour {
-	public float speed;
+	public float speed = .03f;
 	bool paused = true;
 	private Vector3 startPosition;
 	private GameObject player;
@@ -37,7 +37,7 @@ public class Movement : MonoBehaviour {
 
 	void Update () {
 		if (!paused) {
-			Vector3 movement = Vector3.MoveTowards (gameObject.transform.position, player.transform.position, .01f);
+			Vector3 movement = Vector3.MoveTowards (gameObject.transform.position, player.transform.position, speed);
 			gameObject.transform.position = new Vector3 (movement.x, startPosition.y, movement.z);
 
 			RotateTowardsPlayer ();

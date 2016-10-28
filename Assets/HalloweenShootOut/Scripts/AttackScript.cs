@@ -10,13 +10,13 @@ public class AttackScript : MonoBehaviour {
 	public AudioClip attackNoise;
 	private bool isAttacking = false;
 	private Animator animator;
-	private Player player;
+	private VRTK.Player player;
 
 	// Use this for initialization
 	void Start () {
 		animator = gameObject.GetComponent<Animator> ();
 		skeletonSoundPlayer = GameObject.Find ("Skeleton Sounds").GetComponent<AudioSource>();
-		player = GameObject.Find ("Player").GetComponent<Player>();
+		player = GameObject.Find ("Player").GetComponent<VRTK.Player>();
 	}
 
 	private void Attack(){

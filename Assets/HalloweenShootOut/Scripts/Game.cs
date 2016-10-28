@@ -8,7 +8,7 @@ public class Game : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		Begin ();
 	}
 
 	public void Begin() {

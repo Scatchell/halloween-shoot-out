@@ -9,6 +9,7 @@ public class CreateSkeletons : MonoBehaviour {
 	private const int MAX_RANGE = 20;
 	public AudioClip skeletonCreationClip;
 	public AudioSource skeletonNoisePlayer;
+	public float spawnTime = 10.0f;
 
 	// Use this for initialization
 	void Start () {
@@ -16,7 +17,7 @@ public class CreateSkeletons : MonoBehaviour {
 	}
 
 	public void Begin() {
-		InvokeRepeating("SpawnSkeleton", 2.0f, 8.0f);
+		Invoke("SpawnSkeleton", spawnTime);
 	}
 
 	public void Stop() {
@@ -30,6 +31,12 @@ public class CreateSkeletons : MonoBehaviour {
 		return (negative ? -randomNumber : randomNumber);
 	}
 
+	public void ReduceSpawnTime() {
+		if (spawnTime > 1.0f) {
+			spawnTime -= 0.25f;
+		}
+	}
+
 	private void SpawnSkeleton() {
 		skeletonNoisePlayer.Play ();
 
@@ -37,6 +44,8 @@ public class CreateSkeletons : MonoBehaviour {
 		float randomX = RandomPosition ();
 
 		Instantiate (skeletonPrefab, new Vector3 (randomX, 1.2f, randomZ), Quaternion.Euler (new Vector3 (0, 0, 0)));
+		ReduceSpawnTime ();
+		Invoke("SpawnSkeleton", spawnTime);
 	}
 	
 	// Update is called once per frame
