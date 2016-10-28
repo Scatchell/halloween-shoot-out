@@ -8,12 +8,14 @@ public class DamageScript : MonoBehaviour {
 	private float movementPauseDuration = 1.5f;
 	private AudioSource skeletonSoundPlayer;
 	public AudioClip skeletonInjuryNoise;
+	private Scoring playerScore;
 
 	private Animator animator;
 
 	// Use this for initialization
 	void Start () {
 		animator = gameObject.GetComponent<Animator> ();
+		playerScore = GameObject.Find ("ScoreText").GetComponent<Scoring>();
 		skeletonSoundPlayer = GameObject.Find ("Skeleton Sounds").GetComponent<AudioSource>();
 	}
 
@@ -41,6 +43,11 @@ public class DamageScript : MonoBehaviour {
 		gameObject.GetComponent<Movement> ().StartMovement ();
 	}
 
+	private void IncreasePlayerScore ()
+	{
+		playerScore.ScoreUp ();
+	}
+
 	void Hit(int damage) {
 		health -= damage;
 		PlaySkeletonInjuryNoise ();
@@ -49,6 +56,7 @@ public class DamageScript : MonoBehaviour {
 		if (health > 0) {
 			Invoke ("StartMovement", movementPauseDuration);
 		} else {
+			IncreasePlayerScore ();
 			gameObject.GetComponent<AttackScript> ().StopAttacking ();
 		}
 

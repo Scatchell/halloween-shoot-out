@@ -2,6 +2,8 @@
 using System.Collections;
 
 public class CreateSkeletons : MonoBehaviour {
+
+
 	public GameObject skeletonPrefab;
 	private const int MIN_RANGE = 8;
 	private const int MAX_RANGE = 20;
@@ -34,7 +36,7 @@ public class CreateSkeletons : MonoBehaviour {
 		float randomZ = RandomPosition ();
 		float randomX = RandomPosition ();
 
-		Instantiate (skeletonPrefab, new Vector3 (randomX, 1f, randomZ), Quaternion.Euler (new Vector3 (0, 0, 0)));
+		Instantiate (skeletonPrefab, new Vector3 (randomX, 1.2f, randomZ), Quaternion.Euler (new Vector3 (0, 0, 0)));
 	}
 	
 	// Update is called once per frame

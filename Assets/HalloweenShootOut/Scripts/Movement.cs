@@ -17,7 +17,7 @@ public class Movement : MonoBehaviour {
 		Invoke ("StartMovement", 3f);
 	}
 
-	private void RotateTowardsPlayer(){
+	public void RotateTowardsPlayer(){
 		//extract this
 		var towardPlayer = new Vector3 (player.transform.position.x, startPosition.y, player.transform.position.z);
 		gameObject.transform.LookAt (towardPlayer);

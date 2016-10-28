@@ -20,6 +20,7 @@ public class AttackScript : MonoBehaviour {
 	}
 
 	private void Attack(){
+		gameObject.GetComponent<Movement> ().RotateTowardsPlayer ();
 		player.DecrementHealth ();
 		gameObject.GetComponent<Movement> ().PauseMovement ();
 		animator.Play ("SwingHeavy");
