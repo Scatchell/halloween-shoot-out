@@ -32,6 +32,11 @@ public class AttackScript : MonoBehaviour {
 		}
 	}
 
+	public void StopAttacking() {
+		isAttacking = false;
+		CancelInvoke ();
+	}
+
 	// Update is called once per frame
 	void Update () {
 	}

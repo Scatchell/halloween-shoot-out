@@ -11,7 +11,14 @@ public class CreateSkeletons : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		skeletonNoisePlayer.clip = skeletonCreationClip;
+	}
+
+	public void Begin() {
 		InvokeRepeating("SpawnSkeleton", 2.0f, 8.0f);
+	}
+
+	public void Stop() {
+		CancelInvoke ();
 	}
 
 	static float RandomPosition ()

@@ -46,6 +46,8 @@ public class DamageScript : MonoBehaviour {
 		PauseMovement ();
 		if (health > 0) {
 			Invoke ("StartMovement", movementPauseDuration);
+		} else {
+			gameObject.GetComponent<AttackScript> ().StopAttacking ();
 		}
 
 		animator.Play(health == 0 ? "Death" : "Hit");
