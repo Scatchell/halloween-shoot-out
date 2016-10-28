@@ -28,6 +28,7 @@ public class SteamVR_GazeTracker : MonoBehaviour
 
     public virtual void OnGazeOn(GazeEventArgs e)
     {
+		Debug.Log ("Gazed...");
         if (GazeOn != null)
             GazeOn(this, e);
     }

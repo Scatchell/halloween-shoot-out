@@ -28,7 +28,7 @@ public class CreateSkeletons : MonoBehaviour {
 		float randomZ = RandomPosition ();
 		float randomX = RandomPosition ();
 
-		Instantiate (skeletonPrefab, new Vector3 (randomX, 1.5f, randomZ), Quaternion.Euler (new Vector3 (0, 0, 0)));
+		Instantiate (skeletonPrefab, new Vector3 (randomX, 1f, randomZ), Quaternion.Euler (new Vector3 (0, 0, 0)));
 	}
 	
 	// Update is called once per frame

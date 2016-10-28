@@ -40,7 +40,6 @@ public class DamageScript : MonoBehaviour {
 	}
 
 	void Hit() {
-		Debug.Log ("Hit!");
 		health -= hitDamage;
 		PlaySkeletonInjuryNoise ();
 		CancelInvoke ();
