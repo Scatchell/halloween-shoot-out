@@ -13,7 +13,6 @@ public class CreateSkeletons : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		skeletonNoisePlayer.clip = skeletonCreationClip;
 	}
 
 	public void Begin() {
@@ -38,6 +37,7 @@ public class CreateSkeletons : MonoBehaviour {
 	}
 
 	private void SpawnSkeleton() {
+		skeletonNoisePlayer.clip = skeletonCreationClip;
 		skeletonNoisePlayer.Play ();
 
 		float randomZ = RandomPosition ();

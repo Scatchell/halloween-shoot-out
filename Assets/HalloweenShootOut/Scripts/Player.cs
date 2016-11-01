@@ -8,6 +8,8 @@ namespace VRTK
 		private bool isDying = false;
 		private const float RATIO = .03f;
 		private const float FALLING_SPEED = .3f;
+		public AudioClip fastHeartbeat;
+		public AudioClip slowHeartbeat;
 
 		public int playerHealth = 10;
 		public int damagePerHit = 1;
@@ -39,10 +41,18 @@ namespace VRTK
 			VRTK_DeviceFinder.GetControllerLeftHand ().GetComponent<VRTK_ControllerActions>().TriggerHapticPulse(3000, 0.3f, 0.001f);
 			VRTK_DeviceFinder.GetControllerRightHand ().GetComponent<VRTK_ControllerActions>().TriggerHapticPulse(3000, 0.3f, 0.001f);
 
+			var audioSource = gameObject.GetComponent<AudioSource> ();
 			playerHealth -= damagePerHit;
 			if (playerHealth < 1) {
 				Die ();
+			} else if (playerHealth < 7) {
+				audioSource.clip = slowHeartbeat;
+				audioSource.Play ();
+			} else if (playerHealth <= 2) {
+				audioSource.clip = fastHeartbeat;
+				audioSource.Play ();
 			}
+
 			Debug.Log (playerHealth);
 		}
 	}

@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class Movement : MonoBehaviour {
-	public float speed = .03f;
+	private float speed = .02f;
 	bool paused = true;
 	private Vector3 startPosition;
 	private GameObject player;

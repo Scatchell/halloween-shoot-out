@@ -8,6 +8,7 @@ public class DamageScript : MonoBehaviour {
 	private float movementPauseDuration = 1.5f;
 	private AudioSource skeletonSoundPlayer;
 	public AudioClip skeletonInjuryNoise;
+	public AudioClip secondSkeletonInjuryNoise;
 	private Scoring playerScore;
 
 	private Animator animator;
@@ -64,11 +65,15 @@ public class DamageScript : MonoBehaviour {
 	}
 
 	private void PlaySkeletonInjuryNoise() {
-		skeletonSoundPlayer.clip = skeletonInjuryNoise;
+		AudioClip skeletonNoise = Random.Range (0, 2) == 1 ? skeletonInjuryNoise : secondSkeletonInjuryNoise;
+		skeletonSoundPlayer.clip = skeletonNoise;
 		skeletonSoundPlayer.Play ();
 	}
 	// Update is called once per frame
 	void Update () {
-	
+		if (!IsAlive ()) {
+			var position = gameObject.transform.position;
+			gameObject.transform.position = Vector3.MoveTowards (position, new Vector3 (position.x, 0.6f, position.z), 0.005f);
+		}
 	}
 }
